@@ -7,6 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Grimaldus", "Grimaldus\Grim
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Random", "Random", "{64659331-40D7-4B40-A74A-9DE90F24FA8B}"
 	ProjectSection(SolutionItems) = preProject
+		appveyor.yml = appveyor.yml
 		README.md = README.md
 	EndProjectSection
 EndProject
