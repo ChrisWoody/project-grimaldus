@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Rewrite;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -24,6 +25,7 @@ namespace Grimaldus
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            services.Configure<MvcOptions>(options => { options.Filters.Add(new RequireHttpsAttribute()); });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
@@ -39,6 +41,10 @@ namespace Grimaldus
                 app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
             }
+
+            var options = new RewriteOptions()
+                .AddRedirectToHttpsPermanent();
+            app.UseRewriter(options);
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
