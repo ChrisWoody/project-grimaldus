@@ -47,7 +47,10 @@ namespace Grimaldus
             app.UseRewriter(options);
 
             app.UseHttpsRedirection();
-            app.UseStaticFiles();
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                ServeUnknownFileTypes = true
+            });
             app.UseCookiePolicy();
 
             app.UseMvc(routes =>
