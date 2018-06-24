@@ -12,26 +12,37 @@
     @{
         foreach (var project in Model.ProjectDescriptionModels)
         {
-    <div class="col-md-4">
-        <div class="border border-dark mb-3 rounded">
-            <div class="card">
-                <h3 class="card-header">@project.Title</h3>
-                <img class="card-img-top" src="@project.PathToImage" alt="" />
-                <div class="card-body">
-                    <h5 class="card-subtitle text-muted">@project.Subtitle</h5>
-                    @{
-                        foreach (var tag in project.Tags)
+            <div class="col-md-4">
+                <div class="border border-dark mb-3 rounded">
+                    <div class="card">
+                        <h3 class="card-header">@project.Title</h3>
+                        @if (project.PathToImage != null)
                         {
-                            <span class="badge badge-dark">@tag</span>
+                            <img class="card-img-top" src="@project.PathToImage" alt="" />
                         }
-                    }
-                    <p class="card-text">@project.Description</p>
-                    <a class="btn btn-primary" href="@project.PlayButton.Link" target="_blank">@project.PlayButton.Text</a>
-                    <a class="btn btn-info" href="@project.InfoButton.Link" target="_blank">@project.InfoButton.Text</a>
+                        <div class="card-body">
+                            <h5 class="card-subtitle text-muted">@project.Subtitle</h5>
+                            @{
+                                foreach (var tag in project.Tags)
+                                {
+                                    <span class="badge badge-dark">@tag</span>
+                                }
+                            }
+                            <p class="card-text">@project.Description</p>
+
+                            @{
+                                var playTarget = project.PlayButton.OpenInNewTab ? "target=\"_blank\"" : "";
+                                <a class="btn btn-primary" href="@project.PlayButton.Link" @playTarget>@project.PlayButton.Text</a>
+                            }
+
+                            @{
+                                var infoTarget = project.InfoButton.OpenInNewTab ? "target=\"_blank\"" : "";
+                                <a class="btn btn-info" href="@project.InfoButton.Link" @infoTarget>@project.InfoButton.Text</a>
+                            }
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
         }
     }
 </div>
