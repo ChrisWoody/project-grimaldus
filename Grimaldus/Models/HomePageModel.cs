@@ -9,7 +9,7 @@
                 Title = "Project Grimaldus",
                 Subtitle = "This website!",
                 Tags = new[] {"ASP.NET Core", "C#"},
-                Description = "Click 'Learn More' to see the technical side of website (i.e. CI, CD, Hosting, SSL)",
+                Description = "Click 'Learn More' to see the why I've made this website as well as some of the technical aspects of it",
                 PlayButton = new ButtonModel
                 {
                     Link = "/Projects/ProjectGrimaldus",
