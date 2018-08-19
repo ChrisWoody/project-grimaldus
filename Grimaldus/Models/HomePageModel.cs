@@ -6,6 +6,17 @@
         {
             new ProjectDescriptionModel
             {
+                Title = "Project 'X' naming",
+                Description = "What is a 'Grimaldus'? Do you dare Google it? Click 'Learn More' to see where I get these names from.",
+                PlayButton = new ButtonModel
+                {
+                    Link = "/Projects/ProjectNaming",
+                    Text = "Learn more",
+                    OpenInNewTab = false
+                }
+            },
+            new ProjectDescriptionModel
+            {
                 Title = "Project Grimaldus",
                 Subtitle = "This website!",
                 Tags = new[] {"ASP.NET Core", "C#"},

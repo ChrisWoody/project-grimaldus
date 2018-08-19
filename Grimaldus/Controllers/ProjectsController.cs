@@ -8,5 +8,10 @@ namespace Grimaldus.Controllers
         {
             return View();
         }
+
+        public IActionResult ProjectNaming()
+        {
+            return View();
+        }
     }
 }

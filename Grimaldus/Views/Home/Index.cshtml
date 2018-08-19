@@ -23,9 +23,12 @@
                         <div class="card-body">
                             <h5 class="card-subtitle text-muted">@project.Subtitle</h5>
                             @{
-                                foreach (var tag in project.Tags)
+                                if (project.Tags != null)
                                 {
-                                    <span class="badge badge-dark">@tag</span>
+                                    foreach (var tag in project.Tags)
+                                    {
+                                        <span class="badge badge-dark">@tag</span>
+                                    }
                                 }
                             }
                             <p class="card-text">@project.Description</p>
@@ -36,8 +39,11 @@
                             }
 
                             @{
-                                var infoTarget = project.InfoButton.OpenInNewTab ? "target=\"_blank\"" : "";
-                                <a class="btn btn-info" href="@project.InfoButton.Link" @infoTarget>@project.InfoButton.Text</a>
+                                if (project.InfoButton != null)
+                                {
+                                    var infoTarget = project.InfoButton.OpenInNewTab ? "target=\"_blank\"" : "";
+                                    <a class="btn btn-info" href="@project.InfoButton.Link" @infoTarget>@project.InfoButton.Text</a>
+                                }
                             }
                         </div>
                     </div>
