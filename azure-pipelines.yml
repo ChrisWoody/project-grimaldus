@@ -15,6 +15,6 @@ steps:
   inputs:
     command: publish
     publishWebProjects: True
-    arguments: './Grimaldus/Grimaldus.csproj --configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory) -r win10-x64'
+    arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory) -r win10-x64'
     zipAfterPublish: True
   displayName: Build and zip ($(buildConfiguration))
