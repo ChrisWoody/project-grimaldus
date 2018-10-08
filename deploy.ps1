@@ -13,6 +13,7 @@ $ErrorActionPreference = "Stop"
 Set-StrictMode -Version "Latest"
 
 try {
+    Get-ChildItem -Path $PackagePath -Recurse | Write-Host $_
     $zipPath = Get-ChildItem *.zip | Select-Object -first 1
     $PackagePath = Resolve-Path (Join-Path -Path $PSScriptRoot -ChildPath $zipPath)
     
