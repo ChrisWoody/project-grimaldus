@@ -15,11 +15,12 @@ Set-StrictMode -Version "Latest"
 try {
     Get-ChildItem -Path $PackagePath *.zip
     $zipPath = Get-ChildItem -Path $PackagePath *.zip | Select-Object -first 1
-    $PackagePath = Resolve-Path ($zipPath)
+    Write-Host $zipPath
+    #$PackagePath = Resolve-Path ($zipPath)
     
     $msDeployArgs =
     '-verb:sync ' +
-    "-source:package='$PackagePath' " + 
+    "-source:package='$zipPath' " + 
     "-dest:ContentPath=.,ComputerName=https://184.173.161.69:8172/MSDeploy.axd?site=chriswoodcodes.net,UserName=$Username,Password=$Password,AuthType='Basic',includeAcls='False' " +
     "-retryAttempts:5 -retryInterval:5000"
     
