@@ -11,12 +11,16 @@ variables:
 
 steps:
 - script: dotnet build --configuration $(buildConfiguration)
-- script: dotnet publish ./Grimaldus/Grimaldus.csproj -c $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory) -r win10-x64
-#- task: DotNetCoreCLI@2
-#  inputs:
-#    command: publish
-#    publishWebProjects: True
-#    arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory) -r win10-x64'
-#    zipAfterPublish: True
-- task: PublishBuildArtifacts@1
-  displayName: Build and zip ($(buildConfiguration))
+#- script: dotnet publish ./Grimaldus/Grimaldus.csproj -c $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory) -r win10-x64
+- task: DotNetCoreCLI@2
+  inputs:
+    command: publish
+    publishWebProjects: True
+    arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory) -r win10-x64'
+    zipAfterPublish: True
+- task: PowerShell@2
+  inputs:
+    filePath: 'deploy.ps1'
+    arguments: '-Username $(username) -Password $(password) -PackagePath $(Build.ArtifactStagingDirectory)'
+#- task: PublishBuildArtifacts@1
+#  displayName: Build and zip ($(buildConfiguration))

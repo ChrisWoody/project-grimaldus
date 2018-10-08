@@ -9,6 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Random", "Random", "{646593
 	ProjectSection(SolutionItems) = preProject
 		appveyor.yml = appveyor.yml
 		azure-pipelines.yml = azure-pipelines.yml
+		deploy.ps1 = deploy.ps1
 		README.md = README.md
 	EndProjectSection
 EndProject
