@@ -13,9 +13,8 @@ $ErrorActionPreference = "Stop"
 Set-StrictMode -Version "Latest"
 
 try {
-    Get-ChildItem -Path $PackagePath -Recurse
-    $zipPath = Get-ChildItem *.zip | Select-Object -first 1
-    $PackagePath = Resolve-Path (Join-Path -Path $PSScriptRoot -ChildPath $zipPath)
+    $zipPath = Get-ChildItem -Path $PackagePath *.zip | Select-Object -first 1
+    $PackagePath = Resolve-Path ($zipPath)
     
     $msDeployArgs =
     '-verb:sync ' +
