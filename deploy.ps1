@@ -16,11 +16,11 @@ try {
     Get-ChildItem -Path $PackagePath *.zip
     $zipPath = Get-ChildItem -Path $PackagePath *.zip | Select-Object -first 1
     Write-Host $zipPath
-    #$PackagePath = Resolve-Path ($zipPath)
+    $PackagePath = Resolve-Path (Resolve-Path (Join-Path -Path $PackagePath -ChildPath $zipPath)
     
     $msDeployArgs =
     '-verb:sync ' +
-    "-source:package='$zipPath' " + 
+    "-source:package='$PackagePath' " + 
     "-dest:ContentPath=.,ComputerName=https://184.173.161.69:8172/MSDeploy.axd?site=chriswoodcodes.net,UserName=$Username,Password=$Password,AuthType='Basic',includeAcls='False' " +
     "-retryAttempts:5 -retryInterval:5000"
     
