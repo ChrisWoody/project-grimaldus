@@ -16,7 +16,7 @@ try {
     Get-ChildItem -Path $PackagePath *.zip
     $zipPath = Get-ChildItem -Path $PackagePath *.zip | Select-Object -first 1
     Write-Host $zipPath
-    $PackagePath = Resolve-Path (Resolve-Path (Join-Path -Path $PackagePath -ChildPath $zipPath)
+    $PackagePath = Resolve-Path (Resolve-Path (Join-Path -Path $PackagePath -ChildPath $zipPath))
     
     $msDeployArgs =
     '-verb:sync ' +
