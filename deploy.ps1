@@ -13,6 +13,7 @@ $ErrorActionPreference = "Stop"
 Set-StrictMode -Version "Latest"
 
 try {
+    Get-ChildItem -Path $PackagePath *.zip
     $zipPath = Get-ChildItem -Path $PackagePath *.zip | Select-Object -first 1
     $PackagePath = Resolve-Path ($zipPath)
     
