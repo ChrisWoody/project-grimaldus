@@ -19,7 +19,7 @@ try {
     $msDeployArgs =
     '-verb:sync ' +
     "-source:package='$PackagePath' " + 
-    "-dest:ContentPath=.,ComputerName=https://184.173.161.69:8172/MSDeploy.axd?site=chriswoodcodes.net,UserName=$Username,Password=$Password,AuthType='Basic',includeAcls='False' " +
+    "-dest:ComputerName=https://184.173.161.69:8172/MSDeploy.axd?site=chriswoodcodes.net,UserName=$Username,Password=$Password,AuthType='Basic',includeAcls='False' " +
     "-retryAttempts:5 -retryInterval:5000 " +
     "-allowUntrusted"
     
